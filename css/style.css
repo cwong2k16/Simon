@@ -1,0 +1,21 @@
+.greenBtn {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  display: inline-block; }
+
+.redBtn {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  display: inline-block; }
+
+/*# sourceMappingURL=style.css.map */

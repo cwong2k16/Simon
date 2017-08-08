@@ -1,0 +1,20 @@
+$lbs: 100px; // "light button size"
+
+@mixin lightbuttons($color, $tl, $tr, $bl, $br){
+    width: $lbs;
+    height: $lbs;
+    background-color: $color;
+    border-top-left-radius: $tl;
+    border-top-right-radius: $tr;
+    border-bottom-left-radius: $bl;
+    border-bottom-left-radius: $br;
+    display: inline-block;
+}
+
+.greenBtn{
+    @include lightbuttons(green, 100px, 0px, 0px, 0px);
+}
+
+.redBtn{
+    @include lightbuttons(red, 0px, 100px, 0px, 0px);
+}
