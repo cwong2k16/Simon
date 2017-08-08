@@ -25,7 +25,7 @@ body{
 .blueBtn{
     @include lightbuttons(#1976d2, 0px, 0px, 0px, $lbs);
 }
-.margin{
+.simon{
     div{
         margin: $margin;
     }
