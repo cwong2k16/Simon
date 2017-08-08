@@ -5,12 +5,22 @@ var bbs = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 var btnIDs = ["greenBtn", "redBtn", "yellowBtn", "blueBtn"];
 var btnProps = {"greenBtn": {"light": "#4caf50", "dark": "#388e3c", "audio": gbs}, "yellowBtn": {"light": "#ffeb3b", "dark":"#fbc02d", "audio": ybs}, "redBtn": {"light": "#f44336", "dark": "#d32f2f", "audio": rbs}, "blueBtn": {"light": "#2196f3", "dark": "#1976d2", "audio": bbs}};
 var colorsToShow = ["redBtn", "blueBtn", "greenBtn"];
+var playerEmulate = [];
 $(document).ready(function(){
   $("button").click(function(){
     if(btnIDs.includes(this.id)){
-        console.log(this.id);
         $("#" + this.id).css("background", btnProps[this.id]["light"]);
         btnProps[this.id]["audio"].play();
+        playerEmulate.push(this.id);
+        var a = check();
+        if(a !== "aaa"){
+            if(a){
+                console.log("You won!");
+            }
+            else{
+                console.log("You lost!");
+            }
+        }
         var id = this.id;
         setTimeout(function(){
             $("#" + id).css("background", btnProps[id]["dark"]);
@@ -23,7 +33,6 @@ $(document).ready(function(){
             $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
             var id = colorsToShow[index];
             var thisBtn = btnProps[id];
-            console.log(thisBtn);
             setTimeout(function(){            
                 $("#" + id).css("background", btnProps[id]["dark"]);
             }, 500);
@@ -33,3 +42,15 @@ $(document).ready(function(){
     }
   });
 });
+
+function check(){
+    for(var i = 0; i < playerEmulate.length; i++){
+        if(playerEmulate[i] !== colorsToShow[i]){
+            return false;
+        }
+    }
+    if(playerEmulate.length === colorsToShow.length){
+        return true;
+    }
+    return "aaa";
+}
