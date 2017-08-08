@@ -1,21 +1,49 @@
+body {
+  text-align: center; }
+
 .greenBtn {
-  width: 100px;
-  height: 100px;
+  width: 225px;
+  height: 225px;
   background-color: green;
-  border-top-left-radius: 100px;
+  border-top-left-radius: 225px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   display: inline-block; }
 
 .redBtn {
-  width: 100px;
-  height: 100px;
+  width: 225px;
+  height: 225px;
   background-color: red;
   border-top-left-radius: 0px;
-  border-top-right-radius: 100px;
+  border-top-right-radius: 225px;
   border-bottom-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   display: inline-block; }
+
+.yellowBtn {
+  width: 225px;
+  height: 225px;
+  background-color: yellow;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 225px;
+  border-bottom-right-radius: 0px;
+  display: inline-block; }
+
+.blueBtn {
+  width: 225px;
+  height: 225px;
+  background-color: blue;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 225px;
+  display: inline-block; }
+
+.margin div {
+  margin: -2px; }
+.margin span {
+  margin: -2px; }
 
 /*# sourceMappingURL=style.css.map */

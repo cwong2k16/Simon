@@ -1,5 +1,8 @@
-$lbs: 100px; // "light button size"
-
+$lbs: 225px; // "light button size"
+$margin: -2px;
+body{
+    text-align:center;
+}
 @mixin lightbuttons($color, $tl, $tr, $bl, $br){
     width: $lbs;
     height: $lbs;
@@ -7,14 +10,26 @@ $lbs: 100px; // "light button size"
     border-top-left-radius: $tl;
     border-top-right-radius: $tr;
     border-bottom-left-radius: $bl;
-    border-bottom-left-radius: $br;
+    border-bottom-right-radius: $br;
     display: inline-block;
 }
-
 .greenBtn{
-    @include lightbuttons(green, 100px, 0px, 0px, 0px);
+    @include lightbuttons(green, $lbs, 0px, 0px, 0px);
 }
-
 .redBtn{
-    @include lightbuttons(red, 0px, 100px, 0px, 0px);
+    @include lightbuttons(red, 0px, $lbs, 0px, 0px);
+}
+.yellowBtn{
+    @include lightbuttons(yellow, 0px, 0px, $lbs, 0px);
+}
+.blueBtn{
+    @include lightbuttons(blue, 0px, 0px, 0px, $lbs);
+}
+.margin{
+    div{
+        margin: $margin;
+    }
+    span{
+        margin: $margin;
+    }
 }
