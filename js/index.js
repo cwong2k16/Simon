@@ -4,7 +4,7 @@ var ybs = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
 var bbs = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 var btnIDs = ["greenBtn", "redBtn", "yellowBtn", "blueBtn"];
 var btnProps = {"greenBtn": {"light": "#4caf50", "dark": "#388e3c", "audio": gbs}, "yellowBtn": {"light": "#ffeb3b", "dark":"#fbc02d", "audio": ybs}, "redBtn": {"light": "#f44336", "dark": "#d32f2f", "audio": rbs}, "blueBtn": {"light": "#2196f3", "dark": "#1976d2", "audio": bbs}};
-var colorsToShow = ["redBtn", "blueBtn", "greenBtn"];
+var colorsToShow = ["redBtn"];
 var playerEmulate = [];
 $(document).ready(function(){
   $("button").click(function(){
@@ -15,10 +15,15 @@ $(document).ready(function(){
         var a = check();
         if(a !== "aaa"){
             if(a){
-                console.log("You won!");
+                alert("You won!");
+                var rand = Math.floor(Math.random() * 4);
+                colorsToShow.push(btnIDs[rand]);
+                console.log(colorsToShow);
+                playerEmulate = [];
             }
             else{
-                console.log("You lost!");
+                alert("You lose!");
+                playerEmulate = [];
             }
         }
         var id = this.id;
@@ -31,6 +36,7 @@ $(document).ready(function(){
         setInterval(function(){
         if(index < colorsToShow.length){
             $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
+            btnProps[colorsToShow[index]]["audio"].play();
             var id = colorsToShow[index];
             var thisBtn = btnProps[id];
             setTimeout(function(){            
