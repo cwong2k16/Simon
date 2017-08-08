@@ -4,7 +4,7 @@ body {
 .greenBtn {
   width: 225px;
   height: 225px;
-  background-color: green;
+  background-color: #388e3c;
   border-top-left-radius: 225px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -14,7 +14,7 @@ body {
 .redBtn {
   width: 225px;
   height: 225px;
-  background-color: red;
+  background-color: #d32f2f;
   border-top-left-radius: 0px;
   border-top-right-radius: 225px;
   border-bottom-left-radius: 0px;
@@ -24,7 +24,7 @@ body {
 .yellowBtn {
   width: 225px;
   height: 225px;
-  background-color: yellow;
+  background-color: #fbc02d;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 225px;
@@ -34,7 +34,7 @@ body {
 .blueBtn {
   width: 225px;
   height: 225px;
-  background-color: blue;
+  background-color: #1976d2;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;

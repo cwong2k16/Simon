@@ -14,16 +14,16 @@ body{
     display: inline-block;
 }
 .greenBtn{
-    @include lightbuttons(green, $lbs, 0px, 0px, 0px);
+    @include lightbuttons(#388e3c, $lbs, 0px, 0px, 0px);
 }
 .redBtn{
-    @include lightbuttons(red, 0px, $lbs, 0px, 0px);
+    @include lightbuttons(#d32f2f, 0px, $lbs, 0px, 0px);
 }
 .yellowBtn{
-    @include lightbuttons(yellow, 0px, 0px, $lbs, 0px);
+    @include lightbuttons(#fbc02d, 0px, 0px, $lbs, 0px);
 }
 .blueBtn{
-    @include lightbuttons(blue, 0px, 0px, 0px, $lbs);
+    @include lightbuttons(#1976d2, 0px, 0px, 0px, $lbs);
 }
 .margin{
     div{
