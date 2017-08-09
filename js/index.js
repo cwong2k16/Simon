@@ -10,13 +10,20 @@ var randIndex = Math.floor(Math.random()*4);
 var colorsToShow = [btnIDs[randIndex]];
 var playerEmulate = [];
 var gameLoop;
+var playing = false;
+var strictMode = false;
 $(document).ready(function(){
   $("button").click(function(){
     if(btnIDs.includes(this.id)){
+        $("#correct").html("");
         $("#" + this.id).css("background", btnProps[this.id]["light"]);
         btnProps[this.id]["audio"].play();
         playerEmulate.push(this.id);
         var a = check();
+        var id = this.id;
+        setTimeout(function(){
+            $("#" + id).css("background", btnProps[id]["dark"]);
+        }, 500);
         if(a !== "aaa"){
             if(a){
                 index = 0;
@@ -27,35 +34,43 @@ $(document).ready(function(){
                 var rand = Math.floor(Math.random() * 4);
                 colorsToShow.push(btnIDs[rand]);
                 playerEmulate = [];
+                if(score === 21){
+                    $("#correct").html("You won by getting 20 in a row!");
+                    setTimeout(function(){
+                        alert("You won!");
+                    }, 1000);
+                    reset();
+                    play();
+                }
             }
             else{
                 index = 0;
                 $("#correct").html("incorrect!!");
-                console.log("You lose!");
                 playerEmulate = [];
+                if(strictMode){
+                    reset();
+                    play();
+                }
             }
-        }
-        var id = this.id;
-        setTimeout(function(){
-            $("#" + id).css("background", btnProps[id]["dark"]);
-        }, 500);
-        if(score === 21){
-            $("#correct").html("You won by getting 20 in a row!");
-            setTimeout(function(){
-                alert("You won!");
-            }, 1000);
-            reset();
-            play();
-            
         }
     }
     else if(this.id === "play"){
           play();
     }
-      else if(this.id === "reset"){
+    else if(this.id === "reset"){
           reset();
           play();
-      }
+    }
+    else if(this.id === "strict"){
+        strictMode = !strictMode;
+        if(strictMode){
+            $("#strictText").html("strict");
+        }
+        else{
+            $("#strictText").html("not strict");
+        }
+    }
+      
   });
 });
 
@@ -77,20 +92,24 @@ function reset(){
     randIndex = Math.floor(Math.random()*4);
     colorsToShow = [btnIDs[randIndex]];
     playerEmulate = [];
+    playing = false;
     $("#steps").html("1");
 }
 
 function play(){
-    gameLoop = setInterval(function(){
-    if(index < colorsToShow.length){
-        $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
-        btnProps[colorsToShow[index]]["audio"].play();
-        var id = colorsToShow[index];
-        var thisBtn = btnProps[id];
-        setTimeout(function(){            
-            $("#" + id).css("background", btnProps[id]["dark"]);
-        }, 500);
-    index++;    
-    }   
-  }, 1000);
+    if(!playing){
+        gameLoop = setInterval(function(){
+        if(index < colorsToShow.length){
+            $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
+            btnProps[colorsToShow[index]]["audio"].play();
+            var id = colorsToShow[index];
+            var thisBtn = btnProps[id];
+            setTimeout(function(){            
+                $("#" + id).css("background", btnProps[id]["dark"]);
+            }, 500);
+        index++;    
+        }   
+      }, 1000);
+     playing = !playing;
+    }
 }
