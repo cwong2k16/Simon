@@ -39,6 +39,15 @@ $(document).ready(function(){
         setTimeout(function(){
             $("#" + id).css("background", btnProps[id]["dark"]);
         }, 500);
+        if(score === 21){
+            $("#correct").html("You won by getting 20 in a row!");
+            setTimeout(function(){
+                alert("You won!");
+            }, 1000);
+            reset();
+            play();
+            
+        }
     }
     else if(this.id === "play"){
           play();
