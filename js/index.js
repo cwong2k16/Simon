@@ -65,9 +65,11 @@ $(document).ready(function(){
         strictMode = !strictMode;
         if(strictMode){
             $("#strictText").html("strict");
+            $("#strict").css("background", "red");
         }
         else{
             $("#strictText").html("not strict");
+            $("#strict").css("background", "green")
         }
     }
       
