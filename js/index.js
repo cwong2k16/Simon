@@ -9,6 +9,7 @@ var btnProps = {"greenBtn": {"light": "#4caf50", "dark": "#388e3c", "audio": gbs
 var randIndex = Math.floor(Math.random()*4);
 var colorsToShow = [btnIDs[randIndex]];
 var playerEmulate = [];
+var gameLoop;
 $(document).ready(function(){
   $("button").click(function(){
     if(btnIDs.includes(this.id)){
@@ -40,19 +41,12 @@ $(document).ready(function(){
         }, 500);
     }
     else if(this.id === "play"){
-        setInterval(function(){
-        if(index < colorsToShow.length){
-            $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
-            btnProps[colorsToShow[index]]["audio"].play();
-            var id = colorsToShow[index];
-            var thisBtn = btnProps[id];
-            setTimeout(function(){            
-                $("#" + id).css("background", btnProps[id]["dark"]);
-            }, 500);
-        index++;    
-        }   
-       }, 1000);
+          play();
     }
+      else if(this.id === "reset"){
+          reset();
+          play();
+      }
   });
 });
 
@@ -66,4 +60,28 @@ function check(){
         return true;
     }
     return "aaa";
+}
+function reset(){
+    clearInterval(gameLoop);
+    score = 1;
+    index = 0;
+    randIndex = Math.floor(Math.random()*4);
+    colorsToShow = [btnIDs[randIndex]];
+    playerEmulate = [];
+    $("#steps").html("1");
+}
+
+function play(){
+    gameLoop = setInterval(function(){
+    if(index < colorsToShow.length){
+        $("#" + colorsToShow[index]).css("background", btnProps[colorsToShow[index]]["light"]);
+        btnProps[colorsToShow[index]]["audio"].play();
+        var id = colorsToShow[index];
+        var thisBtn = btnProps[id];
+        setTimeout(function(){            
+            $("#" + id).css("background", btnProps[id]["dark"]);
+        }, 500);
+    index++;    
+    }   
+  }, 1000);
 }
